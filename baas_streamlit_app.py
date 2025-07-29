@@ -10,7 +10,7 @@ st.markdown("Upload your Excel file with **Inputs** and **8760_Load** sheets.")
 uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx"])
 
 if uploaded_file:
-    xls = pd.ExcelFile(uploaded_file)
+    xls = pd.ExcelFile(uploaded_file, engine="openpyxl")
     inputs_df = xls.parse("Inputs").set_index("Parameter")
     load_df = xls.parse("8760_Load")
 
